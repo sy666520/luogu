@@ -1,25 +1,75 @@
 # 洛谷桌面版 · 下载安装页
 
-静态站点，托管在 GitHub Pages，绑定自定义域名后即为下载页。
+静态站点，托管在 GitHub Pages。
+
+- **仓库**：https://github.com/sy666520/luogu
+- **线上地址**：https://sy666520.github.io/luogu/
+- **安装包直链**：https://sy666520.github.io/luogu/download/LuoguSetup.exe
 
 ## 目录说明
 
 ```
-index.html              下载安装页
-logo.png                站点图标
-screenshot.png          界面截图
-download/LuoguSetup.exe 安装程序（1.98 MB，内嵌全部程序文件）
-CNAME                   GitHub Pages 自定义域名（由 Settings 自动生成，勿手改）
+index.html               下载安装页
+logo.png                 站点图标
+screenshot.png           界面截图
+download/LuoguSetup.exe  安装程序（1.98 MB，内嵌全部程序文件）
+.nojekyll                跳过 Jekyll 处理
 ```
 
-## 绑定自定义域名
+页面内所有资源都是相对路径，「复制直链」按钮用 `location.origin` 动态拼接，
+**换域名不需要改任何代码**。
 
-仓库 Settings → Pages → Custom domain 填入你的域名并保存，GitHub 会自动生成 `CNAME` 文件并签发 HTTPS 证书。
+## 首次部署
 
-然后到你的 DNS 服务商添加记录：
+### 方式一：网页上传（不需要命令行）
 
-- **主域名**（如 `luogu.example.com`）→ 添加 `CNAME` 记录，指向 `你的用户名.github.io`
-- **根域名**（如 `example.com`）→ 添加 4 条 `A` 记录，指向：
+1. GitHub 新建仓库，名字填 `luogu`，选 Public，**不要勾** README / .gitignore / License
+2. 进入新仓库，点 `uploading an existing file`
+3. 把 `index.html`、`logo.png`、`screenshot.png`、`README.md` 拖进去，
+   再新建文件 `download/LuoguSetup.exe`（路径里带斜杠会自动建目录）——
+   或者直接把整个文件夹拖进浏览器，会保留目录结构
+4. 提交后进入 Settings → Pages → Source 选 `Deploy from a branch`，
+   Branch 选 `main`、目录 `/ (root)`，保存
+5. 等 1~2 分钟，访问 https://sy666520.github.io/luogu/
+
+### 方式二：命令行推送
+
+```bash
+cd D:\Luogu\GitHub\luogu
+git push -u origin main
+```
+
+首次推送会要求登录。GitHub 已不支持密码，需要 Personal Access Token（PAT）：
+
+- 生成：GitHub → Settings → Developer settings → Personal access tokens →
+  Tokens (classic) → Generate new token，勾选 `repo` 权限
+- 推送时用户名填 `sy666520`，密码位置粘贴 token
+
+或者安装 [Git Credential Manager](https://github.com/git-ecosystem/git-credential-manager)，
+推送时会弹浏览器登录，更省事。
+
+## 更新安装包
+
+主程序重新编译后，覆盖 `download/LuoguSetup.exe` 并推送：
+
+```bash
+cd D:\Luogu\GitHub\luogu
+cp "D:\Luogu\洛谷桌面版安装程序.exe" download/LuoguSetup.exe
+git add download/LuoguSetup.exe
+git commit -m "更新安装包"
+git push
+```
+
+Pages 会在 1 分钟左右重新构建。
+
+## 绑定自定义域名（可选，需要先买域名）
+
+仓库 Settings → Pages → Custom domain 填入域名并保存，GitHub 会自动生成 `CNAME` 文件并签发 HTTPS 证书。
+
+然后到 DNS 服务商添加记录：
+
+- **子域名**（如 `luogu.example.com`）→ `CNAME` 记录，指向 `sy666520.github.io`
+- **根域名**（如 `example.com`）→ 4 条 `A` 记录，指向：
   ```
   185.199.108.153
   185.199.109.153
@@ -29,18 +79,10 @@ CNAME                   GitHub Pages 自定义域名（由 Settings 自动生成
 
 证书签发需要几分钟到十几分钟，期间访问可能报证书错误，等一会儿再试。
 
-## 更新安装包
+## 备用地址
 
-主程序重新编译后，把新的安装程序覆盖到 `download/LuoguSetup.exe`，提交并推送即可：
-
-```bash
-cp "D:\Luogu\洛谷桌面版安装程序.exe" download/LuoguSetup.exe
-git add download/LuoguSetup.exe
-git commit -m "更新安装包"
-git push
-```
-
-页面里的「复制直链」按钮会根据当前域名自动生成链接，换域名无需改代码。
+`github.io` 在国内访问不够稳定，有时慢或打不开。
+主下载页仍保留在：https://luogu-desktop-setup.app.workbuddy.host/
 
 ## 本地预览
 
