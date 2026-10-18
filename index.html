@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="lXqEk3CIhXQ9tYaiHUr27t">
+<head data-page-node-id="pbvFahgM6GNOlY89qS9Br5">
+<meta charset="UTF-8" data-page-node-id="zFR6yMTAADmElErrDallww">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="sbdxrk3RLRDtAPlNuFxWx3">
+<title>洛谷桌面版 - 下载与安装</title>
+<link rel="icon" type="image/png" href="logo.png" data-page-node-id="i9fyUT9DReQZO2ziAtdtyJ">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --blue: #3491FA;
+    --blue-dark: #1E7BE0;
+    --ink: #1F2329;
+    --sub: #6E7781;
+    --line: #E3E7EE;
+    --bg: #F5F6F8;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: #fff;
+    line-height: 1.6;
+  }
+  a { color: var(--blue); text-decoration: none; }
+
+  /* ---------- nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 32px; height: 60px;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; }
+  .nav .brand img { width: 28px; height: 28px; }
+  .nav .links { display: flex; gap: 26px; font-size: 14.5px; }
+  .nav .links a { color: var(--sub); }
+  .nav .links a:hover { color: var(--blue); }
+  .nav .dl-mini {
+    background: var(--blue); color: #fff; padding: 7px 18px; border-radius: 8px;
+    font-size: 14px; font-weight: 600;
+  }
+  .nav .dl-mini:hover { background: var(--blue-dark); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    max-width: 1120px; margin: 0 auto; padding: 72px 32px 56px;
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center;
+  }
+  .hero h1 { font-size: 42px; line-height: 1.25; letter-spacing: .5px; }
+  .hero h1 .accent { color: var(--blue); }
+  .hero .tagline { margin-top: 14px; font-size: 17px; color: var(--sub); }
+  .hero .meta { margin-top: 10px; font-size: 13.5px; color: #9aa3ad; }
+  .hero .actions { margin-top: 30px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .btn-main {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--blue); color: #fff; font-size: 16.5px; font-weight: 600;
+    padding: 14px 34px; border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(52,145,250,.35);
+    transition: transform .15s, background .15s;
+  }
+  .btn-main:hover { background: var(--blue-dark); transform: translateY(-2px); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--line); color: var(--ink);
+    padding: 13px 22px; border-radius: 12px; font-size: 15px; cursor: pointer; background: #fff;
+  }
+  .btn-ghost:hover { background: var(--bg); }
+  .note { margin-top: 14px; font-size: 13px; color: #9aa3ad; }
+
+  .shot {
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: 0 24px 60px rgba(31,35,41,.14);
+    background: #fff;
+  }
+  .shot img { display: block; width: 100%; }
+
+  /* ---------- sections ---------- */
+  section { max-width: 1120px; margin: 0 auto; padding: 64px 32px; }
+  .sec-title { text-align: center; font-size: 28px; }
+  .sec-sub { text-align: center; color: var(--sub); margin-top: 8px; font-size: 15px; }
+
+  .grid {
+    margin-top: 40px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px 22px; transition: box-shadow .2s, transform .2s;
+  }
+  .card:hover { box-shadow: 0 10px 30px rgba(31,35,41,.08); transform: translateY(-3px); }
+  .card .ico {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: #EAF3FE; color: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 21px; margin-bottom: 14px;
+  }
+  .card h3 { font-size: 16.5px; margin-bottom: 6px; }
+  .card p { font-size: 13.8px; color: var(--sub); }
+
+  /* ---------- steps ---------- */
+  .steps { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .step {
+    text-align: center; padding: 28px 20px;
+    background: var(--bg); border-radius: 14px;
+  }
+  .step .num {
+    width: 40px; height: 40px; margin: 0 auto 14px; border-radius: 50%;
+    background: var(--blue); color: #fff; font-weight: 700; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step h3 { font-size: 16px; margin-bottom: 6px; }
+  .step p { font-size: 13.5px; color: var(--sub); }
+  .step code {
+    background: #fff; border: 1px solid var(--line); border-radius: 6px;
+    padding: 1px 7px; font-size: 12.5px; font-family: Consolas, monospace; color: var(--ink);
+  }
+
+  /* ---------- faq ---------- */
+  .faq { max-width: 760px; margin: 40px auto 0; }
+  .qa { border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; margin-bottom: 14px; background: #fff; }
+  .qa h4 { font-size: 15.5px; margin-bottom: 6px; }
+  .qa p { font-size: 14px; color: var(--sub); }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top: 1px solid var(--line); margin-top: 40px;
+    padding: 28px 32px; text-align: center; font-size: 13px; color: #9aa3ad;
+  }
+  footer a { color: var(--sub); }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 36px; transform: translateX(-50%) translateY(20px);
+    background: var(--ink); color: #fff; font-size: 14px;
+    padding: 10px 20px; border-radius: 10px; opacity: 0; pointer-events: none;
+    transition: all .25s;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 48px; }
+    .grid, .steps { grid-template-columns: 1fr; }
+    .nav .links { display: none; }
+  }
+</style>
+</head>
+<body data-page-node-id="JKpQzSsjZvsgwke57ACFsn">
+
+<nav class="nav" data-page-node-id="Y7lF4eBJDfUgKPkaKke5BC">
+  <div class="brand" data-page-node-id="lqGtq6uhh2mSLWdz1dCefL"><img src="logo.png" alt="洛谷桌面版" data-page-node-id="thKMX7WOE37QKpTdHQFBIX">洛谷桌面版</div>
+  <div class="links" data-page-node-id="8dapEGphy8ckcI6RFFKeeK">
+    <a href="#features" data-page-node-id="pT6kPXrcUW7it8vG5EI3wq">功能特性</a>
+    <a href="#install" data-page-node-id="PZ9wFASjkDViQVHLoXs5Ca">安装步骤</a>
+    <a href="#faq" data-page-node-id="AbuerplDqUsx0lmW0GUvJr">常见问题</a>
+  </div>
+  <a class="dl-mini" href="download/LuoguSetup.exe" download="洛谷桌面版安装程序.exe" data-page-node-id="5Y9jVP8YWtcIZf4lyTN9Pk">下载安装包</a>
+</nav>
+
+<header class="hero" data-page-node-id="oEXKcCGckMsGSzq9xgcNrR">
+  <div data-page-node-id="pxAVwFqwYpBv5UOqhohOk4">
+    <h1 data-page-node-id="m8HzTs0m1H4eAPV9WPb5IQ">洛谷，<br data-page-node-id="bDHziR8BWgIyfGFL8ityiw">装进<span class="accent" data-page-node-id="bIrrrW2hXdzyMkcHtE84lS">桌面</span>里。</h1>
+    <p class="tagline" data-page-node-id="LUnB9fT8T6rmVNDXzSfqQ0">洛谷官网（luogu.com.cn）的 Windows 桌面客户端。原生窗口、无浏览器工具栏，打开即是刷题界面。</p>
+    <p class="meta" data-page-node-id="tKi7C56nu643VNUIPGmxak">v1.0 · 1.98 MB · Windows 10 / 11 · 免安装框架（.NET Framework 4.8 系统自带）</p>
+    <div class="actions" data-page-node-id="oQ7SNPYl6TWRvXaVyXPu0s">
+      <a class="btn-main" id="btnDownload" href="download/LuoguSetup.exe" download="洛谷桌面版安装程序.exe" data-page-node-id="0atPkHgX1SMPgbpnCwFs8g">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="ypW6ER2kXD2swdoTGOd5do"><path d="M12 3v12" data-page-node-id="RWFcSRNEsaFZ0SZxiCRFew"/><path d="M6 11l6 6 6-6" data-page-node-id="BzBiMf1BSGMeezDKZBiwWa"/><path d="M4 21h16" data-page-node-id="rLS8G6jQgrny2bf9JCDDue"/></svg>
+        下载安装程序
+      </a>
+      <button class="btn-ghost" id="btnCopy" data-page-node-id="2qyQoDWsFFPHZXXrE9EPTA">复制直链</button>
+    </div>
+    <p class="note" data-page-node-id="KBbzqBrjYBar7oGCEw4Nsf">下载后得到 <b data-page-node-id="v8uySVO0XXsEwIYoctAXjC">洛谷桌面版安装程序.exe</b>，双击即可安装，无需管理员权限。</p>
+  </div>
+  <div class="shot" data-page-node-id="GKRGiPJWRMkQs5buBMTYRi"><img src="screenshot.png" alt="洛谷桌面版界面截图" data-page-node-id="JD3hvQUPjiJLB1IDhifFEe"></div>
+</header>
+
+<section id="features" data-page-node-id="gVLtiY5qidaljAB7VQPtvH">
+  <h2 class="sec-title" data-page-node-id="O8X9pJLTigEQGUGAtOdnbJ">功能特性</h2>
+  <p class="sec-sub" data-page-node-id="VeWb3AdeCvGGRA72NWJ3rh">一个窗口，只做刷题这一件事</p>
+  <div class="grid" data-page-node-id="eTizhm3hF3m2y8SU49vTCp">
+    <div class="card" data-page-node-id="5w4a2Y6c0cBcSCQns7BgX5"><div class="ico" data-page-node-id="cnVzzcNFji19P8i4ofdWk0">🖥️</div><h3 data-page-node-id="gZqLfsY0vWmO66jNEJ5jXz">原生桌面窗口</h3><p data-page-node-id="61xKG5QHTU4vL8e1kHd4Uj">基于 Edge WebView2 内核渲染，无浏览器工具栏与地址栏，标题栏拖动、双击最大化、边缘缩放一应俱全。</p></div>
+    <div class="card" data-page-node-id="GzgFTaYpxcM4TQ3LnFCkBF"><div class="ico" data-page-node-id="B1qsbTzWXftIDgIfQljrja">🔐</div><h3 data-page-node-id="XatHSVuuMxmO87EjOovYUu">登录状态保持</h3><p data-page-node-id="aXOF0VK2XkRwSF4vyLDuYB">登录凭据保存在本机，下次启动自动保持登录，不必反复扫码输密码。</p></div>
+    <div class="card" data-page-node-id="Stk7HIWnHigDzRQLqDFKED"><div class="ico" data-page-node-id="gIXmGjk0XJh5iQ44mkBEP4">🪟</div><h3 data-page-node-id="HFlDcZzAIf8LZQVBN0uYl6">窗口状态记忆</h3><p data-page-node-id="qpghasw3klpLaz5HjC95Ee">窗口大小、位置与最大化状态自动记忆，重开即恢复上次的布局，最小化、还原、跨屏最大化全部正常。</p></div>
+    <div class="card" data-page-node-id="iTskupCzyUmPYxdRY2yKaN"><div class="ico" data-page-node-id="m2NsiiDhmomrthbosBrdVe">⚡</div><h3 data-page-node-id="cgBEeV9CUJbBwA2JbHRAwx">轻量单文件</h3><p data-page-node-id="7puMzaRH6vU3YFE0mY0Tfi">安装包不到 2 MB，绿色安装、无需管理员权限，卸载不留残余。</p></div>
+    <div class="card" data-page-node-id="BYArwXNTIpAoDBCoZ48npy"><div class="ico" data-page-node-id="J04ZCD7wXP7gS56T68R6Rf">⌨️</div><h3 data-page-node-id="QzXD0EnqJCpafFLWom4AFy">顺手的小功能</h3><p data-page-node-id="ZFzV3XS0fZXYqN5pxCdQhh">Ctrl+R / F5 刷新页面，标题栏右键呼出菜单（刷新、首页、前进后退），新标签页请求自动在窗口内打开。</p></div>
+    <div class="card" data-page-node-id="uipDXkY0JrWixkuuaexaXh"><div class="ico" data-page-node-id="OBrLTp0KEkNFfn1N68g3Fi">🛡️</div><h3 data-page-node-id="obzsPQbmnHV2XC7GWFgiUg">安全干净</h3><p data-page-node-id="VBv01MpKDb5XCMjW92DtYR">不申请管理员权限、不写注册表之外的系统位置，卸载时可选择保留登录数据。</p></div>
+  </div>
+</section>
+
+<section id="install" data-page-node-id="5xRZxbAobNWyjVYlB8Dagb">
+  <h2 class="sec-title" data-page-node-id="3JEOHnFuuBusu53toFXufr">安装步骤</h2>
+  <p class="sec-sub" data-page-node-id="Dq5FOK8zmSzcYMHX5oPggu">三步完成，全程免管理员权限</p>
+  <div class="steps" data-page-node-id="VwqbwM8IHFQf187mwghdxU">
+    <div class="step" data-page-node-id="lksi00UBCH4QlMqf96RA9N"><div class="num" data-page-node-id="ILRWzUCQrNdvG4qYSoxPg9">1</div><h3 data-page-node-id="eOQX4qmVuN3RE0v6xjcUAb">下载</h3><p data-page-node-id="Wu8LJbhMrj8BTMT9TTnoUC">点击上方「下载安装程序」，保存 <code data-page-node-id="rJfMVJ6Fzx3meTrh1wOlCR">洛谷桌面版安装程序.exe</code>。</p></div>
+    <div class="step" data-page-node-id="lVwY9C5mJqYEkgV85Gzi2n"><div class="num" data-page-node-id="uVKuBWuQTzCbasl8uGM0VG">2</div><h3 data-page-node-id="AeQnm7AQggx41W5yFxrRxJ">安装</h3><p data-page-node-id="bBB2nJjCJa1mq7QLtZMZNj">双击运行，选择安装位置（默认 <code data-page-node-id="3MdIfdmFeRwd1HyPnnF2E6">D:\Luogu\App</code>），点击「安装」。</p></div>
+    <div class="step" data-page-node-id="vWAakMONihr6juHB0RHSnL"><div class="num" data-page-node-id="qs3bwcjhzsiRzMo3KwdZRw">3</div><h3 data-page-node-id="wkbEW1b4dO36OughutsMuJ">开刷</h3><p data-page-node-id="LeeNon768QzHHc3p6SMHMP">安装完成后自动创建桌面快捷方式，双击「洛谷」即可开始刷题。</p></div>
+  </div>
+</section>
+
+<section id="faq" data-page-node-id="EKXqLq46VixcLaiI08cOSm">
+  <h2 class="sec-title" data-page-node-id="YTKTgQM2iAW45GcVfNBiJy">常见问题</h2>
+  <div class="faq" data-page-node-id="6zd8KLS6zJSfNKPX1D2sAo">
+    <div class="qa" data-page-node-id="rLMSFvkyvynFOuLD0pRDHn"><h4 data-page-node-id="7YwARg7EC4h80GPgwif4qu">双击安装程序时 Windows 提示"已保护你的电脑"？</h4><p data-page-node-id="Sk8BVHiZqHORYqOLDpXuDS">点击「更多信息」→「仍要运行」即可。本程序为绿色单文件、不申请任何系统权限。</p></div>
+    <div class="qa" data-page-node-id="sI1ep6ecTqGQBY9HXI0yOk"><h4 data-page-node-id="Po6jFgeEWZSFdgKHltBI7B">启动后提示"初始化失败：WebView 内核不可用"？</h4><p data-page-node-id="qVXOmiXItkREAc024W9l8v">需要 Microsoft Edge WebView2 运行时。Windows 11 已内置；Windows 10 可到微软官网搜索"WebView2 Runtime"下载 Evergreen 安装包。</p></div>
+    <div class="qa" data-page-node-id="EBicaCLF7Dii0hGy8kdYP8"><h4 data-page-node-id="QNA12iA7jGcn1CIDm2i1j2">如何卸载？</h4><p data-page-node-id="KXzSS6MyE1qzD4FPi99DLn">设置 → 应用 → 安装的应用 中找到「洛谷桌面版」卸载；或再次运行安装程序，会提供卸载入口。卸载时可选择保留登录数据。</p></div>
+    <div class="qa" data-page-node-id="E89NzSmHc44k2JtRS4kpnW"><h4 data-page-node-id="qf3dSFwlYDLMBJstakCcTw">已安装旧版本怎么办？</h4><p data-page-node-id="ZCoCscA8GZtMeSKTaZktfS">直接重新运行安装程序即可覆盖升级，登录数据与窗口设置会完整保留。</p></div>
+  </div>
+</section>
+
+<footer data-page-node-id="3yOpXyAAnlNz9A1DNkXf4P">
+  洛谷桌面版 · 一个非官方的第三方客户端封装 · 官网 <a href="https://www.luogu.com.cn" target="_blank" rel="noopener" data-page-node-id="ULRFKMyGNyIWPjEG5y56yS">www.luogu.com.cn</a>
+</footer>
+
+<div class="toast" id="toast" data-page-node-id="eGEH5e6SsCK54VMncYKxYM">已复制</div>
+
+<script>
+  var toast = document.getElementById('toast');
+  var timer = null;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(function () { toast.classList.remove('show'); }, 1800);
+  }
+  document.getElementById('btnCopy').addEventListener('click', function () {
+    var url = location.origin + location.pathname.replace(/[^/]*$/, '') + 'download/LuoguSetup.exe';
+    function done() { showToast('直链已复制：' + url); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(done, function () { fallback(); });
+    } else { fallback(); }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = url; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { showToast(url); }
+      document.body.removeChild(ta);
+    }
+  });
+</script>
+
+</body>
+</html>
