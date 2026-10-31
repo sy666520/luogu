@@ -14,7 +14,14 @@ logo.png                 站点图标
 screenshot.png           界面截图
 download/LuoguSetup.exe  安装程序（1.98 MB，内嵌全部程序文件）
 .nojekyll                跳过 Jekyll 处理
+LICENSE                  MIT 开源许可证
 ```
+
+## 开源许可
+
+本项目以 **MIT License** 发布（见 `LICENSE`），可自由使用、修改与分发，
+但必须保留版权声明与许可声明。洛谷（luogu.com.cn）为第三方网站，本软件
+仅为官方站点的桌面端封装，与洛谷官方无隶属关系。
 
 页面内所有资源都是相对路径，「复制直链」按钮用 `location.origin` 动态拼接，
 **换域名不需要改任何代码**。
