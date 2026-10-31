@@ -42,7 +42,7 @@ LICENSE                  MIT 开源许可证
 ### 方式二：命令行推送
 
 ```bash
-cd D:\Luogu\GitHub\luogu
+cd <你的仓库目录>
 git push -u origin main
 ```
 
@@ -60,8 +60,8 @@ git push -u origin main
 主程序重新编译后，覆盖 `download/LuoguSetup.exe` 并推送：
 
 ```bash
-cd D:\Luogu\GitHub\luogu
-cp "D:\Luogu\洛谷桌面版安装程序.exe" download/LuoguSetup.exe
+cd <你的仓库目录>
+cp <新安装包路径> download/LuoguSetup.exe
 git add download/LuoguSetup.exe
 git commit -m "更新安装包"
 git push
