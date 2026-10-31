@@ -26,38 +26,45 @@ LICENSE                  MIT 开源许可证
 页面内所有资源都是相对路径，「复制直链」按钮用 `location.origin` 动态拼接，
 **换域名不需要改任何代码**。
 
-## 首次部署
+## 维护与发布（GitHub CLI）
 
-### 方式一：网页上传（不需要命令行）
-
-1. GitHub 新建仓库，名字填 `luogu`，选 Public，**不要勾** README / .gitignore / License
-2. 进入新仓库，点 `uploading an existing file`
-3. 把 `index.html`、`logo.png`、`screenshot.png`、`README.md` 拖进去，
-   再新建文件 `download/LuoguSetup.exe`（路径里带斜杠会自动建目录）——
-   或者直接把整个文件夹拖进浏览器，会保留目录结构
-4. 提交后进入 Settings → Pages → Source 选 `Deploy from a branch`，
-   Branch 选 `main`、目录 `/ (root)`，保存
-5. 等 1~2 分钟，访问 https://sy666520.github.io/luogu/
-
-### 方式二：命令行推送
+日常维护只需要一个命令：`gh`（GitHub 官方命令行工具），不需要手动管理 Personal Access Token——
+`gh` 用自己的 OAuth 令牌，存在系统钥匙串里。
 
 ```bash
+gh auth login --web --git-protocol https   # 首次：浏览器授权，一次性
+gh repo clone sy666520/luogu               # 首次：取仓库到本地（已有可跳过）
+gh repo view sy666520/luogu --web          # 随时在浏览器打开仓库
+```
+
+Windows 上一键发布脚本（在本机 `D:\Luogu\Build\publish_gh.bat`，未放入仓库）：
+双击即可完成「同步最新安装包 → 提交 → 推送 → 确认 Pages → 等构建 → 在线验收」全流程。
+
+### 方式一：命令行推送（推荐）
+
+```bash
+winget install --id GitHub.cli --exact --accept-package-agreements   # 装 gh
+gh auth login --web --git-protocol https
+gh auth setup-git                  # 让 git push 走 gh 令牌，不用再配 PAT
+
 cd <你的仓库目录>
 git push -u origin main
 ```
 
-首次推送会要求登录。GitHub 已不支持密码，需要 Personal Access Token（PAT）：
+### 方式二：网页上传（完全不用命令行）
 
-- 生成：GitHub → Settings → Developer settings → Personal access tokens →
-  Tokens (classic) → Generate new token，勾选 `repo` 权限
-- 推送时用户名填 `sy666520`，密码位置粘贴 token
-
-或者安装 [Git Credential Manager](https://github.com/git-ecosystem/git-credential-manager)，
-推送时会弹浏览器登录，更省事。
+1. GitHub 新建仓库，名字填 `luogu`，选 Public，**不要勾** README / .gitignore / License
+2. 进入新仓库，点 `uploading an existing file`
+3. 把 `index.html`、`logo.png`、`screenshot.png`、`README.md`、`LICENSE` 拖进去，
+   再新建文件 `download/LuoguSetup.exe`（路径里带斜杠会自动建目录）
+4. 提交后 Settings → Pages → Source 选 `Deploy from a branch`，
+   Branch 选 `main`、目录 `/ (root)`，保存
+5. 等 1~2 分钟，访问 https://sy666520.github.io/luogu/
 
 ## 更新安装包
 
-主程序重新编译后，覆盖 `download/LuoguSetup.exe` 并推送：
+主程序重新编译（`build_all.bat`）后：
+双击 `publish_gh.bat`，或手动执行：
 
 ```bash
 cd <你的仓库目录>
@@ -67,7 +74,7 @@ git commit -m "更新安装包"
 git push
 ```
 
-Pages 会在 1 分钟左右重新构建。
+Pages 会在 1 分钟左右重新构建，之后再访问就是新包。
 
 ## 绑定自定义域名（可选，需要先买域名）
 
@@ -85,11 +92,6 @@ Pages 会在 1 分钟左右重新构建。
   ```
 
 证书签发需要几分钟到十几分钟，期间访问可能报证书错误，等一会儿再试。
-
-## 备用地址
-
-`github.io` 在国内访问不够稳定，有时慢或打不开。
-主下载页仍保留在：https://luogu-desktop-setup.app.workbuddy.host/
 
 ## 本地预览
 
